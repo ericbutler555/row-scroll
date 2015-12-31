@@ -5,81 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RowScroll: Auto-scroll to next and previous rows of your webpage</title>
+    <!--CSS is for this demo only; no CSS is needed for rowScroll to work-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
-    <style>
-      /* CSS is for demo only. NONE of these styles are required for RowScroll to function properly. */
-      * {
-        box-sizing: border-box;
-      }
-      html, body {
-        padding: 0;
-        margin: 0;
-        font: 300 18px/1.4 'Roboto', sans-serif;
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      a:hover {
-        color: #999;
-      }
-      .scroll-target {
-        height: 600px; /* fallback for browsers that don't support the vh unit */
-        height: 100vh;
-        text-align: center;
-        background: whitesmoke;
-        color: #666;
-        position: relative;
-        overflow: hidden;
-      }
-      .scroll-target:nth-of-type(2n) {
-        background: #a8e6dd;
-      }
-      .scroll-target h3 {
-        position: absolute;
-        top: 45%;
-        transform: translateY(-50%);
-        left: 20px;
-        right: 20px;
-        margin: 0;
-        padding: 0;
-        font: 300 200px/1.0 'Roboto', sans-serif;
-        color: #e2e2e2;
-      }
-      .scroll-target:nth-of-type(2n) h3 {
-        color: #d3f2ee;
-      }
-      .scroll-target p {
-        position: absolute;
-        top: 47.5%;
-        transform: translateY(-50%);
-        left: 20px;
-        right: 20px;
-        margin: 0;
-        z-index: 1;
-      }
-      .scroll-target pre {
-        position: absolute;
-        top: 50%;
-        left: 20px;
-        right: 20px;
-        background: rgba(0,0,0,0.7);
-        color: whitesmoke;
-        font-size: 14px;
-        width: 60%;
-        margin: 18px auto 0;
-        text-align: left;
-        overflow-x: scroll;
-        padding: 10px;
-      }
-      @media (min-width: 768px) {
-        .scroll-target h3,
-        .scroll-target p {
-          left: 50px;
-          right: 50px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="demo.css">
   </head>
   <body>
 
@@ -94,7 +22,7 @@
     <div class="scroll-target">
       <h3>1</h3>
       <p>
-        Tested on Chrome (Mac and Windows), Firefox (Mac and Windows), <span style="white-space:nowrap;">IE9/10/11 (Windows),</span> and Safari (Mac).<br>
+        Tested on Chrome (Mac &amp; Windows), Firefox (Mac &amp; Windows), <span style="white-space:nowrap;">IE9/10/11 (Windows),</span> Safari (Mac), and Opera (Windows).<br>
         Works on all.
       </p>
     </div>
@@ -103,7 +31,7 @@
       <h3>2</h3>
       <p>
         Set your own row/section heights in your own CSS.<br>
-        Can be the full viewport height (as shown here), or a fixed pixel height, whatever.
+        Can be the full viewport height (as shown here), a fixed pixel height, or whatever.
       </p>
     </div>
 
@@ -118,8 +46,8 @@
     <div class="scroll-target">
       <h3>4</h3>
       <p>
-        The element isn't important, either.<br>
-        Use <code>&lt;div&gt;</code>, <code>&lt;section&gt;</code>, or any other element you prefer for your row containers.<br>
+        The type of element isn't important, either.<br>
+        Use <code>&lt;div&gt;</code>s, <code>&lt;section&gt;</code>s, or any other element you prefer for your row containers.<br>
         You can even mix and match.
       </p>
     </div>
@@ -127,7 +55,7 @@
     <div class="scroll-target">
       <h3>5</h3>
       <p>
-        Just add <code style="padding:0 5px;">class="scroll-target"</code> to each row container you want your visitors to auto-scroll to.
+        Just add a <code style="padding:0 5px;">scroll-target</code> class to each row container you want your visitors to auto-scroll to.
       </p>
     </div>
 
@@ -139,26 +67,55 @@
     <div class="scroll-target">
       <h3>7</h3>
       <p>
-        Just remember to load jQuery and jQuery Mousewheel before you include RowScroll:<br>
-        <pre>
-  &lt;script src="http://code.jquery.com/jquery-1.11.3.min.js"&gt;&lt;/script&gt;
-  &lt;script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"&gt;&lt;/script&gt;
-  &lt;script src="your/path/to/rowScroll.min.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-        </pre>
+        Customize it.<br>
+        You can also change the scroll-target selector, the speed of the auto-scroll,<br>
+        and the amount of "wiggle room" or offset of the scroll targets.<br>
       </p>
     </div>
 
     <div class="scroll-target">
       <h3>8</h3>
       <p>
+        Remember to load <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="https://github.com/jquery/jquery-mousewheel" target="_blank">jQuery Mousewheel</a> before you include RowScroll:
+      </p>
+      <pre>
+  &lt;script src="http://code.jquery.com/jquery-1.11.3.min.js"&gt;&lt;/script&gt;
+  &lt;script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"&gt;&lt;/script&gt;
+  &lt;script src="your/path/to/rowScroll.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+      </pre>
+    </div>
+
+    <div class="scroll-target">
+      <h3>9</h3>
+      <p>
         Enjoy!<br>
         <a href="https://github.com/ericbutler555/row-scroll">Visit the GitHub page</a> to grab the files and more info.
       </p>
+      <div id="backToTop">
+        back to top
+      </div>
     </div>
 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
     <script src="rowScroll.min.js"></script>
+    <script>
+      /*
+      Note: this stuff is NOT part of rowScroll;
+      it's only used to show/hide the "back to top" button,
+      and auto-scroll to the top of the page when you click it.
+      */
+      $(document).scroll(function(){
+        if ( $(window).scrollTop() < 200 ) {
+          $('#backToTop').fadeOut();
+        } else {
+          $('#backToTop').fadeIn();
+        }
+      }); // end scroll
+      $('#backToTop').click(function(){
+        $('html, body').animate( { scrollTop: 0 }, 400 );
+      }); // end click
+    </script>
   </body>
 </html>

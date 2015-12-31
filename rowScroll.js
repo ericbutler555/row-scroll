@@ -1,3 +1,4 @@
+/* RowScroll 1.0 copyright 2015 Eric Butler, licensed under GNU GPLv2, free for personal and commercial use */
 $(window).on('load', function(){
   
   var scrollTargets = $('.scroll-target'),
