@@ -1,4 +1,8 @@
 /* RowScroll 1.0 copyright 2015 Eric Butler, licensed under GNU GPLv2, free for personal and commercial use */
+
+// add "easeOutQuad" easing function:
+$.extend($.easing,{easeOutQuad:function(n,e,i,u,s){return-u*(e/=s)*(e-2)+i}});
+
 $(window).on('load', function(){
   
   var scrollTargets = $('.scroll-target'),
@@ -47,7 +51,7 @@ $(window).on('load', function(){
           $('html, body').stop().animate(
             { scrollTop: $(scrollTargets[i+1]).offset().top }, // move window so target element is at top of window
             scrollSpeed, // speed in milliseconds
-            'swing' // easing
+            'easeOutQuad' // easing
           ); // end animate
           
           break; // stop looping
@@ -71,7 +75,7 @@ $(window).on('load', function(){
           $('html, body').stop().animate(
             { scrollTop: $(scrollTargets[i]).offset().top },
             scrollSpeed,
-            'swing'
+            'easeOutQuad'
           ); // end animate
           
           break; // stop looping
@@ -81,6 +85,8 @@ $(window).on('load', function(){
       } // end for
       
     } // end else if scrollDirection is up
+    
+    return false;
     
   }); // end on mousewheel event
   
