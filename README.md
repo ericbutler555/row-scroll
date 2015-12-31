@@ -1,6 +1,8 @@
 # RowScroll
 
-Super tiny (`<`1kb) jQuery plugin script that automatically scrolls visitors up and down to different vertical sections of your webpage when they use their mouse scroll wheels, track pads, and finger swipes on touch devices.
+Super tiny (`< 1kb`) jQuery plugin script that automatically scrolls visitors up and down to different vertical sections of your webpage when they use their mouse scroll wheels, track pads, and finger swipes on touch devices.
+
+**NOTE:** Swipe functionality has not been implemented yet, but will soon.
 
 ## License
 
@@ -24,16 +26,16 @@ Heights can vary, too. Can be full-window (100vh) or a fixed pixel height, or un
 
 There are 3 customizable properties:
 
-**Scroll Targets**
-Default: `.scroll-target`
+**Scroll Targets**<br>
+Default: `.scroll-target`<br>
 This is the jQuery selector ( example: `$('.scroll-target')` ) that will target all of the elements to be in the auto-scroll sequence.
 
-**Scroll Speed**
-Default: `400` (milliseconds)
+**Scroll Speed**<br>
+Default: `400` (milliseconds)<br>
 If you want the auto-scrolling to be faster, decrease this number (try `200`). If you want the auto-scrolling to be slower, increase it (try `1000`).
 
-**Wiggle Room**
-Default: `10` (pixels)
+**Wiggle Room**<br>
+Default: `10` (pixels)<br>
 This is less obvious, but what I noticed about other auto-scroller scripts is that they sometimes didn't work, because different browsers's (mainly Firefox's) calculations of where a container started were a little bit off. If you find that your scrolls stop working after the first (or any) scroll instance, try increasing this value and see if that fixes it.
 
 
