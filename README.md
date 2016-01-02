@@ -2,7 +2,7 @@
 
 Super tiny (1kb) jQuery plugin script that automatically scrolls visitors up and down to different vertical sections of your webpage when they use their mouse scroll wheels, track pads, and finger swipes on touch devices.
 
-**NOTE:** Swipe functionality has not been implemented yet, but will soon.
+**NOTE:** As of v1.1, RowScroll now supports touch swipe events on mobile devices. Sweet!
 
 ## License
 

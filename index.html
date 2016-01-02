@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>RowScroll: Auto-scroll to next and previous rows of your webpage</title>
-    <!--CSS is for this demo only; no CSS is needed for rowScroll to work-->
+    <title>RowScroll: Vertical auto-scrolling for your webpage</title>
+    <!--Note: CSS is for this demo only. No CSS is needed for RowScroll to work-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
     <link rel="stylesheet" href="demo.css">
   </head>
@@ -30,13 +30,21 @@
     <div class="scroll-target">
       <h3>2</h3>
       <p>
+        Now works on mobile, too.<br>
+        RowScroll v1.1 can handle touch swipe events as well as traditional scrolling.
+      </p>
+    </div>
+
+    <div class="scroll-target">
+      <h3>3</h3>
+      <p>
         Set your own row/section heights in your own CSS.<br>
         Can be the full viewport height (as shown here), a fixed pixel height, or whatever.
       </p>
     </div>
 
-    <div class="scroll-target" style="height:50vh;">
-      <h3>3</h3>
+    <div class="scroll-target" style="height:380px;height:65vh;">
+      <h3>4</h3>
       <p>
         Row heights can vary.<br>
         The row elements don't have to all be the same height, they can all be different if you want. Doesn't matter.
@@ -44,7 +52,7 @@
     </div>
 
     <div class="scroll-target">
-      <h3>4</h3>
+      <h3>5</h3>
       <p>
         The type of element isn't important, either.<br>
         Use <code>&lt;div&gt;</code>s, <code>&lt;section&gt;</code>s, or any other element you prefer for your row containers.<br>
@@ -53,19 +61,19 @@
     </div>
 
     <div class="scroll-target">
-      <h3>5</h3>
+      <h3>6</h3>
       <p>
         Just add a <code style="padding:0 5px;">scroll-target</code> class to each row container you want your visitors to auto-scroll to.
       </p>
     </div>
 
     <div class="scroll-target">
-      <h3>6</h3>
+      <h3>7</h3>
       <p>That's it!</p>
     </div>
 
     <div class="scroll-target">
-      <h3>7</h3>
+      <h3>8</h3>
       <p>
         Customize it.<br>
         You can also change the scroll-target selector, the speed of the auto-scroll,<br>
@@ -74,7 +82,7 @@
     </div>
 
     <div class="scroll-target">
-      <h3>8</h3>
+      <h3>9</h3>
       <p>
         Remember to load <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="https://github.com/jquery/jquery-mousewheel" target="_blank">jQuery Mousewheel</a> before you include RowScroll:
       </p>
@@ -82,12 +90,10 @@
   &lt;script src="http://code.jquery.com/jquery-1.11.3.min.js"&gt;&lt;/script&gt;
   &lt;script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"&gt;&lt;/script&gt;
   &lt;script src="your/path/to/rowScroll.min.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-      </pre>
+&lt;/body&gt;</pre>
     </div>
 
     <div class="scroll-target">
-      <h3>9</h3>
       <p>
         Enjoy!<br>
         <a href="https://github.com/ericbutler555/row-scroll">Visit the GitHub page</a> to grab the files and more info.
@@ -102,19 +108,16 @@
     <script src="rowScroll.min.js"></script>
     <script>
       /*
-      Note: this stuff is NOT part of rowScroll;
+      Note: this stuff is NOT part of RowScroll;
       it's only used to show/hide the "back to top" button,
       and auto-scroll to the top of the page when you click it.
       */
-      $(document).scroll(function(){
-        if ( $(window).scrollTop() < 200 ) {
-          $('#backToTop').fadeOut();
-        } else {
-          $('#backToTop').fadeIn();
-        }
+      $(document).scroll(function(e){
+        if ( $(window).scrollTop() < 200 ) { $('#backToTop').fadeOut(); }
+        else { $('#backToTop').fadeIn(); }
       }); // end scroll
       $('#backToTop').click(function(){
-        $('html, body').animate( { scrollTop: 0 }, 400 );
+        $('html, body').animate( { scrollTop: 0 }, 400, "swing" );
       }); // end click
     </script>
   </body>
