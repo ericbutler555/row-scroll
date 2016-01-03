@@ -1,18 +1,19 @@
-/* RowScroll 1.1 copyright 2015 Eric Butler, licensed under GNU GPLv2, free for personal and commercial use */
+/* RowScroll 1.11 copyright 2015 Eric Butler, licensed under GNU GPLv2, free for personal and commercial use */
 
 
 // add easing function:
-$.extend($.easing,{easey:function(n,e,i,u,s){return-u*(e/=s)*(e-2)+i}});
+$.extend($.easing,{eoq:function(n,e,i,u,s){return-u*(e/=s)*(e-2)+i}});
 
 
-$(window).on('load', function(){
+$(document).ready(function(){
 
   var scrollTargets = $('.scroll-target'), // selectors to include in the auto-scroll sequence
       scrollTops = [],
       wiggleRoom = 10, // amount of px to add to/subtract from scroll tops when evaluating where to scroll to
       scrollSpeed = 400, // amount of milliseconds to take to get to the next/previous scroll target
       totalScrollTargets = scrollTargets.length, // get total count of how many scroll targets there are
-      lasttm; // used in touchmove event handler
+      lasttmX = 0, // (used in touchmove event handler)
+      lasttmY = 0; // (used in touchmove event handler)
 
 
   // on page load, get a list of all divs with a "scroll-target" class, and their scroll-to locations
@@ -23,22 +24,23 @@ $(window).on('load', function(){
   } // end getScrollTops function definition
 
 
+  // animate the window's scrollTop to the top of the target element
   function autoScrollTo (targetEl) {
-    // animate the window's scrollTop to the top of the target element
     $('html, body')
-      .stop(true, false)
+      .stop()
       .animate(
         { scrollTop: $(targetEl).offset().top }, // move window so target element is at top of window
         scrollSpeed, // speed in milliseconds
-        'easey' // easing
+        'eoq' // easing
       ); // end animate
   } // end autoScrollTo function definition
 
 
   function processScroll (e) {
 
-    // detect the current scroll top amount
-    var scrollPosition = $(window).scrollTop();
+    // get the current scroll position on the page
+    var scrollPosition = window.scrollY;
+
 
     // determine the scroll direction
     if ( e.deltaY > 0 ) { var scrollDirection = 'up'; }
@@ -70,7 +72,8 @@ $(window).on('load', function(){
 
       for ( var i = 0; i < totalScrollTargets; i++ ) {
 
-        // if the current scroll position is less than or equal to the next div's top offset AND greater than the current div's top offset
+        // if the current scroll position is less than or equal to the next div's top offset 
+        // AND greater than the current div's top offset
         if ( scrollPosition <= (scrollTops[i+1] + wiggleRoom) && scrollPosition > (scrollTops[i] + wiggleRoom) ) {
 
           autoScrollTo(scrollTargets[i]);
@@ -95,61 +98,65 @@ $(window).on('load', function(){
 
 
     // re-get the list if the window size changes
-    $(window).on('resize', function(){
+    $(window).on('resize', function () {
       // delete the existing scroll-to locations
       scrollTops.length = 0;
       // get a fresh list of all the scroll-to locations
       getScrollTops();
-    });
+    }); // end on resize
 
 
     // handle a mousewheel or trackpad scroll
     $(window).on('mousewheel', function (e) {
-      e.preventDefault();
+      e.preventDefault(); // prevent natural page scroll
       processScroll(e);
-    }); // end mousewheel
+    }); // end on mousewheel
 
 
     // detect the touchstart x- and y-value
     $(window).on('touchstart', function (e) {
-      ts = e.originalEvent.touches[0].clientY;
       tsX = e.originalEvent.touches[0].clientX;
+      tsY = e.originalEvent.touches[0].clientY;
     }); // end on touchstart
 
 
-    // detect the touchmove y-values and maybe hijack vertical scrolling
+    // detect the touchmove x- and y-values and maybe hijack vertical scrolling
     $(window).on('touchmove', function (e) {
-      tm = e.originalEvent.changedTouches[0].clientY;
+      tmX = e.originalEvent.changedTouches[0].clientX;
+      tmY = e.originalEvent.changedTouches[0].clientY;
       // if this is the first touchmove event, or
-      // if there's been over 5px of vertical movement since the last event,
+      // if there's been over 1px of vertical movement since the last event,
       // prevent page scroll
-      // (the 5px ensures that users can still scroll horizontally)
-      if ( typeof lasttm === 'undefined' || Math.abs(lasttm - tm) > 5 ) {
-        e.preventDefault(); // prevent page scroll
+      // -- but first check if the scroll is horizontal
+      if ( Math.abs(lasttmX - tmX) > 30 && Math.abs(lasttmY - tmY) < 5 ) {
+        // do nothing, user is scrolling horizontally
+      } else if ( lasttmY == 0 || Math.abs(lasttmY - tmY) > 1 ) {
+        e.preventDefault(); // prevent natural page scroll
       } // end if
-      lasttm = tm; // remember what this touchmove's y-value is, for next time
+      lasttmX = tmX; // remember what this touchmove's x-value is, for next time
+      lasttmY = tmY; // remember what this touchmove's y-value is, for next time
     }); // end on touchmove
 
 
     // detect the touchend x- and y-value and handle a mobile swipe
     // (the 50px ensures that horizontal scrolls don't accidentally trigger the processScroll function)
     $(window).on('touchend', function (e) {
-      te = e.originalEvent.changedTouches[0].clientY;
       teX = e.originalEvent.changedTouches[0].clientX;
+      teY = e.originalEvent.changedTouches[0].clientY;
       if ( Math.abs(tsX - teX) > 50 ) {
         return true;
-      } else if (ts > te + 5) {
+      } else if (tsY > teY + 5) {
         e.deltaY = -1; // is moving down
-      } else if (ts < te - 5) {
+      } else if (tsY < teY - 5) {
         e.deltaY = 1; // is moving up
       } else {
         return true;
-      } // end if ts/te comparison
-      e.preventDefault();
+      } // end else
+      e.preventDefault(); // prevent natural page scroll
       processScroll(e);
-    }); // end touchmove
+    }); // end on touchend
 
 
   } // end if totalScrollTargets > 0
 
-}); // end window on load
+}); // end document ready
