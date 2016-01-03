@@ -1,8 +1,8 @@
 # RowScroll
 
-Super tiny (1kb) jQuery plugin script that automatically scrolls visitors up and down to different vertical sections of your webpage when they use their mouse scroll wheels, track pads, and finger swipes on touch devices.
+Super tiny (1.5kb) jQuery plugin script that automatically scrolls visitors up and down to different vertical sections of your webpage when they use their mouse scroll wheels, track pads, and finger swipes on mobile devices.
 
-**NOTE:** As of v1.1, RowScroll now supports touch swipe events on mobile devices. Sweet!
+**NOTE:** As of v1.11, RowScroll now (kinda) supports touch swipe events on mobile devices. Working on tightening that up. Sweet!
 
 ## License
 
@@ -21,6 +21,26 @@ RowScroll relies on [jQuery](http://code.jquery.com/jquery-1.11.3.min.js) and th
 Just add a `scroll-target` class to every row/container element you want to be in the auto-scroll sequence. The containers can be anything: `div`s, `section`s, doesn't matter.
 
 Heights can vary, too. Can be full-window (100vh) or a fixed pixel height, or unspecified. And they don't all have to be the same height, they can be whatever.
+
+#### Page Example
+
+    <body>
+      <header class="scroll-target">
+        ... site banner, nav, etc ...
+      </header>
+      <main>
+        <section class="scroll-target hero-panel"> ... </section>
+        <section class="scroll-target features-panel"> ... </section>
+        <section class="scroll-target testimonials-panel"> ... </section>
+        <section class="scroll-target pricing-panel"> ... </section>
+      </main>
+      <footer class="scroll-target">
+        ... site links, contact info, etc ...
+      </footer>
+      <script src="path/to/jquery.min.js"></script>
+      <script src="path/to/jquery.mousewheel.min.js"></script>
+      <script src="path/to/rowScroll.min.js"></script>
+    </body>
 
 ## Customize
 
@@ -42,5 +62,7 @@ This is less obvious, but what I noticed about other auto-scroller scripts is th
 ## Browser Support
 
 Tested on Chrome (Mac and Windows), Firefox (Mac and Windows), IE9/10/11 (Windows), Safari (Mac), and Opera (Mac and Windows). Works on all.
+
+Testing continues on iOS and Android mobile browsers. Kinda works on both.
 
 Doesn't work on IE8, but doesn't cause problems either. Just doesn't auto-scroll.
