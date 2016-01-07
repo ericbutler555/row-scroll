@@ -1,4 +1,4 @@
-/* RowScroll 1.11 copyright 2015 Eric Butler, licensed under GNU GPLv2, free for personal and commercial use */
+/* RowScroll 1.1.1 copyright 2015 Eric Butler, licensed under GNU GPLv2, free for personal and commercial use */
 
 
 // add easing function:
