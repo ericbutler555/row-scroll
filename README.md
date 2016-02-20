@@ -4,6 +4,8 @@ Super tiny (1.5kb) jQuery plugin script that automatically scrolls visitors up a
 
 **NOTE:** As of v1.1.1, RowScroll now (kinda) supports touch swipe events on mobile devices. Working on tightening that up. Sweet!
 
+>**EXTRA NOTE:** While RowScroll works pretty well, you might also check out [fullPage.js](https://github.com/alvarotrigo/fullPage.js) as an alternative. It's a slightly larger file (25 KB), but it's also more stable and has extra features.
+
 ## License
 
 RowScroll is completely free for personal and commercial end-use, and licensed under the GNU General Public License version 2.
