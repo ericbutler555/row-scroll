@@ -12,7 +12,6 @@ html, body {
 }
 a {
   color: inherit;
-  text-decoration: none;
 }
 a:hover,
 a:active,
@@ -35,7 +34,11 @@ a:focus {
 .scroll-target div {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
   left: 0;
   right: 0;
   margin: 0;
@@ -45,7 +48,8 @@ a:focus {
 
 @media (min-width: 768px) {
   .scroll-target div {
-    padding: 0 50px;
+    left: 50px;
+    right: 50px;
   }
 } /* end media query */
 
